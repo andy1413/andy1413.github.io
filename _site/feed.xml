@@ -2,9 +2,9 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://localhost:4000/</id>
-  <title>Andy Wang</title>
+  <title>王方帅</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-27T21:49:05+08:00</updated>
+  <updated>2022-11-27T20:36:56+08:00</updated>
   <author>
     <name>Fangshuai Wang</name>
     <uri>http://localhost:4000/</uri>

@@ -46,6 +46,8 @@ const allowedDomains = [
     'localhost:4000',
 
     
+        'demo-img.cotes.page',
+    
 
     'fonts.gstatic.com',
     'fonts.googleapis.com',
