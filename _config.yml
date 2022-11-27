@@ -80,7 +80,6 @@ theme_mode:   # [light|dark]
 # e.g. 'https://cdn.com'
 img_cdn: 'https://raw.githubusercontent.com/andy1413/andy1413.github.io/main'
 
-
 # the avatar on sidebar, support local or CORS resources
 avatar: '/assets/img/favicons/apple-touch-icon.png'
 
