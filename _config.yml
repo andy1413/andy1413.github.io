@@ -78,7 +78,7 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://github.com/andy1413/andy1413.github.io/tree/main'
+#img_cdn: 'https://demo-img.cotes.page'
 
 # the avatar on sidebar, support local or CORS resources
 avatar: '/assets/img/favicons/apple-touch-icon.png'
