@@ -46,6 +46,8 @@ const allowedDomains = [
     'localhost:4000',
 
     
+        'andy1413.github.io',
+    
 
     'fonts.gstatic.com',
     'fonts.googleapis.com',
