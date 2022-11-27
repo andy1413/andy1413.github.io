@@ -19,9 +19,9 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 王方帅                         # the main title
+title: Andy Wang                         # the main title
 
-tagline: 行自谦、感恩，忌完美主义、自恋、冲动   # it will display as the sub-title
+tagline: 行自谦、感恩人格，忌完美主义、自恋、冲动   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
@@ -78,10 +78,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 'https://demo-img.cotes.page'
+#img_cdn: 'https://demo-img.cotes.page'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/commons/avatar.jpg'
+avatar: '/assets/img/favicons/apple-touch-icon.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -109,10 +109,10 @@ comments:
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
-    enabled:      true# boolean, keep empty means false
+    enabled:      # boolean, keep empty means false
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
-    env:          [development|production]
+    env:          #[development|production]
 
 pwa:
   enabled: true   # the option for PWA feature
