@@ -37,7 +37,7 @@
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="iOS网络层架构设计" />
-<meta name="author" content="Andy" />
+<meta name="author" content="王方帅 (andy)" />
 <meta property="og:locale" content="zh_CN" />
 <meta name="description" content="一、我认为，一个设计合理的网络层应支持以下方面：" />
 <meta property="og:description" content="一、我认为，一个设计合理的网络层应支持以下方面：" />
@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS网络层架构设计" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Andy"},"dateModified":"2021-12-01T20:30:00+08:00","datePublished":"2021-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-01T17:23:36+08:00","datePublished":"2021-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -686,6 +686,26 @@
 
     <!-- lastmod date -->
     
+    <span>
+      更新于
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1669886616"
+    data-df="YYYY/MM/DD"
+    data-toggle="tooltip" data-placement="bottom">
+  2022/12/01
+</em>
+
+    </span>
+    
 
   
 
@@ -699,7 +719,7 @@
       <em>
       
         
-          <a href=""></a>
+          <a href="https://github.com/andy1413/">王方帅 (andy)</a>
           
         
       
@@ -1236,6 +1256,20 @@
 
 
 
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">最近更新</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+      <li><a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">iOS网络层架构设计</a></li>
+      
+    </ul>
+  </div> <!-- #access-lastmod -->
+
+
+
       
 
 
@@ -1418,6 +1452,60 @@
       
       <!--  The comments switcher -->
 
+  
+  <!-- https://utteranc.es/ -->
+<script src="https://utteranc.es/client.js"
+        repo="andy1413/comment"
+        issue-term="title"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    const origin = "https://utteranc.es";
+    const iframe = "iframe.utterances-frame";
+    const lightTheme = "github-light";
+    const darkTheme = "github-dark";
+    let initTheme = lightTheme;
+
+    if ($("html[data-mode=dark]").length > 0
+        || ($("html[data-mode]").length == 0
+            && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      initTheme = darkTheme;
+    }
+
+    addEventListener("message", (event) => {
+      let theme;
+
+      /* credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> */
+      if (event.origin === origin) {
+        /* page initial */
+        theme = initTheme;
+
+      } else if (event.source === window && event.data &&
+            event.data.direction === ModeToggle.ID) {
+        /* global theme mode changed */
+        const mode = event.data.message;
+        theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+
+      } else {
+        return;
+      }
+
+      const message = {
+        type: "set-theme",
+        theme: theme
+      };
+
+      const utterances = document.querySelector(iframe).contentWindow;
+      utterances.postMessage(message, origin);
+    });
+
+  });
+</script>
+
+
 
     
   </div>
@@ -1533,7 +1621,7 @@
       <div class="footer-left">
         <p class="mb-0">
           © 2022
-          <a href="https://github.com/username">Fangshuai Wang</a>.
+          <a href="https://github.com/andy1413">王方帅 (andy)</a>.
           
           <span data-toggle="tooltip" data-placement="top"
             title="除非另有说明，本网站上的博客文章均由作者按照知识共享署名 4.0 国际 (CC BY 4.0) 许可协议进行授权。">保留部分权利。</span>
