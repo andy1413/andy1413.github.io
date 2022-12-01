@@ -45,11 +45,11 @@
 <meta property="og:url" content="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
 <meta property="og:site_name" content="Andy’s Den" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-12-01T20:30:00+08:00" />
+<meta property="article:published_time" content="2022-12-01T20:30:00+08:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS网络层架构设计" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-01T17:23:36+08:00","datePublished":"2021-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-01T20:26:22+08:00","datePublished":"2022-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -532,6 +532,30 @@
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -548,6 +572,30 @@
       
         
         
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
       
 
       
@@ -676,10 +724,10 @@
 
 
 <em class=""
-    data-ts="1638361800"
+    data-ts="1669897800"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
-  2021/12/01
+  2022/12/01
 </em>
 
     </span>
@@ -698,7 +746,7 @@
 
 
 <em class=""
-    data-ts="1669886616"
+    data-ts="1669897582"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
   2022/12/01
@@ -750,7 +798,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="2937 字">
+  title="3058 字">
   <em>16 分钟</em>阅读</span>
 
     </div>
@@ -1135,6 +1183,23 @@
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 2. <a href="/assets/zip/TestChainRequest.zip">链式请求 demo</a></p>
+
+<h2 id="二网络层优化可以做以下事情"><span class="mr-2">二、网络层优化可以做以下事情：</span><a href="#二网络层优化可以做以下事情" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="1dns优化"><span class="mr-2">1，DNS优化</span><a href="#1dns优化" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<h3 id="2http2支持http2基于spdy协议实现多路复用使用hpack算法进行头部压缩"><span class="mr-2">2，HTTP/2支持：HTTP/2基于SPDY协议实现多路复用，使用HPACK算法进行头部压缩。</span><a href="#2http2支持http2基于spdy协议实现多路复用使用hpack算法进行头部压缩" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<h2 id="参考文章"><span class="mr-2">参考文章：</span><a href="#参考文章" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p><a href="https://juejin.cn/post/6844903487721963527">YTKNetwork源码解析 - 掘金 </a></p>
+
+<p><a href="https://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html">iOS应用架构谈 网络层设计方案 </a></p>
+
+<p><a href="https://juejin.cn/post/6844903541983674376">开源一个封装AFNetworking的网络框架 - SJNetwork - 掘金 </a></p>
+
+<p><a href="https://cloud.tencent.com/developer/news/111949">接口粒度：API复用性与服务器压力之间的平衡 - 腾讯云开发者社区-腾讯云</a></p>
+
 
 </div>
 
