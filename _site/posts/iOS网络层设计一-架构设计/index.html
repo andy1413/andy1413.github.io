@@ -36,25 +36,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.1" />
-<meta property="og:title" content="iOS网络层架构设计" />
+<meta property="og:title" content="iOS网络层设计一-架构设计" />
 <meta name="author" content="王方帅 (andy)" />
 <meta property="og:locale" content="zh_CN" />
 <meta name="description" content="一、我认为，一个设计合理的网络层应支持以下方面：" />
 <meta property="og:description" content="一、我认为，一个设计合理的网络层应支持以下方面：" />
-<link rel="canonical" href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
-<meta property="og:url" content="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
+<link rel="canonical" href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
+<meta property="og:url" content="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
 <meta property="og:site_name" content="Andy’s Den" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-12-01T20:30:00+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="iOS网络层架构设计" />
+<meta property="twitter:title" content="iOS网络层设计一-架构设计" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-01T20:45:20+08:00","datePublished":"2022-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-01T20:30:00+08:00","datePublished":"2022-12-01T20:30:00+08:00","description":"一、我认为，一个设计合理的网络层应支持以下方面：","headline":"iOS网络层设计一-架构设计","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>iOS网络层架构设计 | Andy's Den
+  <title>iOS网络层设计一-架构设计 | Andy's Den
   </title>
 
   <!--
@@ -421,7 +421,7 @@
         
 
           
-            <span>iOS网络层架构设计</span>
+            <span>iOS网络层设计一-架构设计</span>
           
 
         
@@ -708,7 +708,7 @@
 
 <!-- return -->
 
-<h1 data-toc-skip>iOS网络层架构设计</h1>
+<h1 data-toc-skip>iOS网络层设计一-架构设计</h1>
 
 <div class="post-meta text-muted">
     <!-- published date -->
@@ -733,26 +733,6 @@
     </span>
 
     <!-- lastmod date -->
-    
-    <span>
-      更新于
-      <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-
-<em class=""
-    data-ts="1669898720"
-    data-df="YYYY/MM/DD"
-    data-toggle="tooltip" data-placement="bottom">
-  2022/12/01
-</em>
-
-    </span>
     
 
   
@@ -1261,19 +1241,19 @@
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25B8%2580-%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25B8%2580-%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F&text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den" data-toggle="tooltip" data-placement="top"
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25B8%2580-%25E6%259E%25B6%25E6%259E%2584%25E8%25AE%25BE%25E8%25AE%25A1%2F&text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1+-+Andy%27s+Den" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
@@ -1321,20 +1301,6 @@
 
 
 
-  <div id="access-lastmod" class="post">
-    <div class="panel-heading">最近更新</div>
-    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
-      
-        
-        
-        
-      <li><a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">iOS网络层架构设计</a></li>
-      
-    </ul>
-  </div> <!-- #access-lastmod -->
-
-
-
       
 
 
@@ -1356,6 +1322,89 @@
     
     
     
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
       
         
         
@@ -1372,6 +1421,11 @@
     
     
     
+  
+    
+    
+    
+    
       
         
         
@@ -1382,6 +1436,56 @@
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -1414,6 +1518,18 @@
     
       
       <a class="post-tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
+    
+      
+      <a class="post-tag" href="/tags/cache/">Cache</a>
+    
+      
+      <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
+    
+      
+      <a class="post-tag" href="/tags/yycache/">YYCache</a>
+    
+      
+      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>
@@ -1471,6 +1587,19 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
     
 
 
@@ -1485,9 +1614,71 @@
   
     
     
+      
+      
+    
+  
+    
+    
   
 
 
+
+  <div id="related-posts" class="mb-2 mb-sm-4">
+    <h3 class="pt-2 mb-4 ml-1"
+      data-toc-skip>相关文章</h3>
+    <div class="card-deck mb-4">
+    
+      
+      
+      <div class="card">
+        <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class="small"
+    data-ts="1670416200"
+    data-df="YYYY/MM/DD"
+    >
+  2022/12/07
+</em>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>iOS网络层设计二-缓存方案深入</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                1. YYCache分析
+ 1. 优点：
+
+  1. 内部支持数据库存储、文件存储、或混合存储。
+
+  2. 使用LRU算法，最久未被使用的优先清除，以缓存总个数、缓存总开销、是否过期三个维度进行清理。
+
+ 2. 缺点：
+
+  1. 是否过期这个维度不是根据写入时间去做的判断，而是根据访问时间，一次访问将更新刷新缓存时间，依此为基础再重新开始算过期时长
+
+  2. 所以，更加适合的是图片这种...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+    </div> <!-- .card-deck -->
+  </div> <!-- #related-posts -->
 
 
     
@@ -1505,10 +1696,10 @@
   
 
   
-  <div class="btn btn-outline-primary disabled"
+  <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" class="btn btn-outline-primary"
     prompt="下一篇">
-    <p>-</p>
-  </div>
+    <p>iOS网络层设计二-缓存方案深入</p>
+  </a>
   
 
 </div>
@@ -1606,6 +1797,89 @@
     
     
     
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
       
         
         
@@ -1622,6 +1896,11 @@
     
     
     
+  
+    
+    
+    
+    
       
         
         
@@ -1632,6 +1911,56 @@
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -1664,6 +1993,18 @@
     
       
       <a class="post-tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
+    
+      
+      <a class="post-tag" href="/tags/cache/">Cache</a>
+    
+      
+      <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
+    
+      
+      <a class="post-tag" href="/tags/yycache/">YYCache</a>
+    
+      
+      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>

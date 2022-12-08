@@ -466,7 +466,76 @@
 
   <div class="post-preview">
     <h1>
-      <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">iOS网络层架构设计</a>
+      <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/">iOS网络层设计二-缓存方案深入</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        1. YYCache分析
+ 1. 优点：
+
+  1. 内部支持数据库存储、文件存储、或混合存储。
+
+  2. 使用LRU算法，最久未被使用的优先清除，以缓存总个数、缓存总开销、是否过期三个维度进行清理。
+
+ 2. 缺点：
+
+  1. 是否过期这个维度不是根据写入时间去做的判断，而是根据访问时间，一次访问将更新刷新缓存时间，依此为基础再重新开始算过期时长
+
+  2. 所以，更加适合的是图片这种...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1670416200"
+    data-df="YYYY/MM/DD"
+    >
+  2022/12/07
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            iOS架构
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">iOS网络层设计一-架构设计</a>
     </h1>
 
     <div class="post-content">
@@ -614,20 +683,6 @@
 
 
 
-  <div id="access-lastmod" class="post">
-    <div class="panel-heading">最近更新</div>
-    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
-      
-        
-        
-        
-      <li><a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">iOS网络层架构设计</a></li>
-      
-    </ul>
-  </div> <!-- #access-lastmod -->
-
-
-
       
 
 
@@ -649,6 +704,89 @@
     
     
     
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
       
         
         
@@ -665,6 +803,11 @@
     
     
     
+  
+    
+    
+    
+    
       
         
         
@@ -675,6 +818,56 @@
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -707,6 +900,18 @@
     
       
       <a class="post-tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
+    
+      
+      <a class="post-tag" href="/tags/cache/">Cache</a>
+    
+      
+      <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
+    
+      
+      <a class="post-tag" href="/tags/yycache/">YYCache</a>
+    
+      
+      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>
@@ -752,6 +957,89 @@
     
     
     
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
       
         
         
@@ -768,6 +1056,11 @@
     
     
     
+  
+    
+    
+    
+    
       
         
         
@@ -778,6 +1071,56 @@
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -810,6 +1153,18 @@
     
       
       <a class="post-tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/">网络层</a>
+    
+      
+      <a class="post-tag" href="/tags/cache/">Cache</a>
+    
+      
+      <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
+    
+      
+      <a class="post-tag" href="/tags/yycache/">YYCache</a>
+    
+      
+      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>

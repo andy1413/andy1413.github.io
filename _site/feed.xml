@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Andy's Den</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-12-01T20:58:32+08:00</updated>
+  <updated>2022-12-08T18:46:02+08:00</updated>
   <author>
     <name>王方帅 (andy)</name>
     <uri>http://localhost:4000/</uri>
@@ -20,14 +20,69 @@
 
   
   <entry>
-    <title>iOS网络层架构设计</title>
-    <link href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" rel="alternate" type="text/html" title="iOS网络层架构设计" />
+    <title>iOS网络层设计二-缓存方案深入</title>
+    <link href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" rel="alternate" type="text/html" title="iOS网络层设计二-缓存方案深入" />
+    <published>2022-12-07T20:30:00+08:00</published>
+  
+    <updated>2022-12-07T20:30:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/</id>
+    <content src="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" />
+    <author>
+      <name>andy</name>
+    </author>
+
+  
+    
+    <category term="iOS架构" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      1. YYCache分析
+ 1. 优点：
+
+  1. 内部支持数据库存储、文件存储、或混合存储。
+
+  2. 使用LRU算法，最久未被使用的优先清除，以缓存总个数、缓存总开销、是否过期三个维度进行清理。
+
+ 2. 缺点：
+
+  1. 是否过期这个维度不是根据写入时间去做的判断，而是根据访问时间，一次访问将更新刷新缓存时间，依此为基础再重新开始算过期时长
+
+  2. 所以，更加适合的是图片这种只要url一致则图片永远不会发生变更的场景。对于网络层缓存这种场景来说，很可能经常使用的缓存一直不过期，一直无法加载最新网络数据。
+
+2. NSURLCache分析
+
+
+
+ 1. 只能缓存get请求，post请求不能缓存。
+
+ 2. 不够灵活，只能设置一个缓存总文件夹，不能分别指定每个文件缓存的位置。
+
+ 3. 苹果没有公开其内部实现的缓存策略是LRU还是别的，所以在超过缓存大小时哪些缓存会被清理...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>iOS网络层设计一-架构设计</title>
+    <link href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" rel="alternate" type="text/html" title="iOS网络层设计一-架构设计" />
     <published>2022-12-01T20:30:00+08:00</published>
   
-    <updated>2022-12-01T20:45:20+08:00</updated>
+    <updated>2022-12-01T20:30:00+08:00</updated>
   
-    <id>http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</id>
-    <content src="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
+    <id>http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</id>
+    <content src="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
     <author>
       <name>andy</name>
     </author>
