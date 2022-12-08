@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS网络层设计二-缓存方案深入" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-07T20:30:00+08:00","datePublished":"2022-12-07T20:30:00+08:00","description":"1. YYCache分析  1. 优点：","headline":"iOS网络层设计二-缓存方案深入","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-08T21:58:07+08:00","datePublished":"2022-12-07T20:30:00+08:00","description":"1. YYCache分析  1. 优点：","headline":"iOS网络层设计二-缓存方案深入","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -810,6 +810,26 @@
 
     <!-- lastmod date -->
     
+    <span>
+      更新于
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1670507887"
+    data-df="YYYY/MM/DD"
+    data-toggle="tooltip" data-placement="bottom">
+  2022/12/08
+</em>
+
+    </span>
+    
 
   
 
@@ -905,7 +925,7 @@
 
 <p> 3.支持实现Codable协议的可以直接缓存，看出作者考虑到了网络返回Model缓存的场景匹配性。</p>
 
-<h2 id="4-md5值是否会发生哈希碰撞"><span class="mr-2">4. MD5值是否会发生哈希碰撞</span><a href="#4-md5值是否会发生哈希碰撞" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="5-md5值是否会发生哈希碰撞"><span class="mr-2">5. MD5值是否会发生哈希碰撞</span><a href="#5-md5值是否会发生哈希碰撞" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p> 1.<a href="https://www.javaroad.cn/questions/130314">两个不同的字符串可以生成相同的MD5哈希码吗？</a></p>
 
 <p>  <a href="https://www.it1352.com/558448.html">md5的冲突率是多少？</a></p>
@@ -916,7 +936,7 @@
 
 <p> 3. 不用md5存的话不确定会不会有其他问题，比如特殊字符、比如超过文件名最大长度。</p>
 
-<h2 id="5-缓存过期问题变了之后怎么处理"><span class="mr-2">5. 缓存过期问题，变了之后怎么处理。</span><a href="#5-缓存过期问题变了之后怎么处理" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="6-缓存过期问题变了之后怎么处理"><span class="mr-2">6. 缓存过期问题，变了之后怎么处理。</span><a href="#6-缓存过期问题变了之后怎么处理" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p> 问：</p>
 
 <p>  如果上午发起请求后服务端返回数据给客户端，客户端缓存到了本地，下午再次发起请求时服务端实际已经变了，但是取的客户端缓存，还是老数据，这种情况怎么处理？</p>
@@ -931,13 +951,13 @@
 
 <p>  4.还可以这样，比如在一级页面请求remote刷新缓存，二级以上页面使用localOrRemote。</p>
 
-<h2 id="6增加缓存版本"><span class="mr-2">6，增加缓存版本</span><a href="#6增加缓存版本" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="7增加缓存版本"><span class="mr-2">7，增加缓存版本</span><a href="#7增加缓存版本" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p> 在DiskCache的name字段中增加缓存版本，以app版本为缓存版本，升级版本后删除之前的缓存文件。</p>
 
-<h2 id="7按照业务设置不同的基类去配置不同的缓存过期时长"><span class="mr-2">7，按照业务设置不同的基类去配置不同的缓存过期时长。</span><a href="#7按照业务设置不同的基类去配置不同的缓存过期时长" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="8按照业务设置不同的基类去配置不同的缓存过期时长"><span class="mr-2">8，按照业务设置不同的基类去配置不同的缓存过期时长。</span><a href="#8按照业务设置不同的基类去配置不同的缓存过期时长" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p> 按照业务去配置不同的缓存过期时长。</p>
 
-<h2 id="8-参考文章"><span class="mr-2">8. 参考文章：</span><a href="#8-参考文章" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="9-参考文章"><span class="mr-2">9. 参考文章：</span><a href="#9-参考文章" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <p> <a href="https://juejin.cn/post/6844903554214264840">YYCache 源码解析 - 掘金</a></p>
 
@@ -1074,6 +1094,20 @@
 
 
 
+
+
+
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">最近更新</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+      <li><a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/">iOS网络层设计二-缓存方案深入</a></li>
+      
+    </ul>
+  </div> <!-- #access-lastmod -->
 
 
 
