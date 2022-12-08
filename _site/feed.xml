@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Andy's Den</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-12-08T18:46:02+08:00</updated>
+  <updated>2022-12-08T21:57:53+08:00</updated>
   <author>
     <name>王方帅 (andy)</name>
     <uri>http://localhost:4000/</uri>
@@ -63,11 +63,13 @@
 
 
 
- 1. 只能缓存get请求，post请求不能缓存。
+ 1. 缺点：
 
- 2. 不够灵活，只能设置一个缓存总文件夹，不能分别指定每个文件缓存的位置。
+  1. 只能缓存get请求，post请求不能缓存。
 
- 3. 苹果没有公开其内部实现的缓存策略是LRU还是别的，所以在超过缓存大小时哪些缓存会被清理...
+  2. 不够灵活，只能设置一个缓存总文件夹，不能分别指定每个文件缓存的位置。
+
+  3. 苹果没有公开其内部实现的缓存策略是LRU还是别的，所以在超过缓...
     </summary>
   
 
