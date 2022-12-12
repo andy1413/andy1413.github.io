@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Andy's Den</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-12-12T18:48:53+08:00</updated>
+  <updated>2022-12-12T18:52:18+08:00</updated>
   <author>
     <name>王方帅 (andy)</name>
     <uri>http://localhost:4000/</uri>
@@ -63,11 +63,13 @@
 
  6. 通过productId调用SKProductsRequest到苹果服务器获取SKProduct
 
-        _productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:@[productId]];
-        _productRequest.delegate = self;
+_productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:@[productId]];
+_productRequest.delegate = self;
 
 
- 7. 苹果服务器在代理中返回包含折扣...
+ 7. 苹果服务器在代理中返回包含折扣的SKProduct
+
+- (v...
     </summary>
   
 

@@ -735,7 +735,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="1079 字">
+  title="1078 字">
   <em>5 分钟</em>阅读</span>
 
     </div>
@@ -766,8 +766,8 @@
         <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>        <span class="n">_productRequest</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKProductsRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithProductIdentifiers</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">productId</span><span class="p">]];</span>
-        <span class="n">_productRequest</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+</pre></td><td class="rouge-code"><pre><span class="n">_productRequest</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKProductsRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithProductIdentifiers</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">productId</span><span class="p">]];</span>
+<span class="n">_productRequest</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 7. 苹果服务器在代理中返回包含折扣的SKProduct</p>
@@ -811,13 +811,13 @@
 5
 6
 7
-</pre></td><td class="rouge-code"><pre>    <span class="kt">SKMutablePayment</span> <span class="o">*</span><span class="n">payment</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SKMutablePayment</span> <span class="nv">paymentWithProduct</span><span class="p">:</span><span class="n">product</span><span class="p">];</span>
-    
-    <span class="kt">SKPaymentDiscount</span> <span class="o">*</span><span class="n">discount</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKPaymentDiscount</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithIdentifier</span><span class="p">:</span><span class="n">identifier</span> <span class="nv">keyIdentifier</span><span class="p">:</span><span class="n">keyIdentifier</span> <span class="nv">nonce</span><span class="p">:</span><span class="n">nonce</span> <span class="nv">signature</span><span class="p">:</span><span class="n">signature</span> <span class="nv">timestamp</span><span class="p">:</span><span class="n">timestamp</span><span class="p">];</span>
-    
-    <span class="n">payment</span><span class="o">.</span><span class="n">applicationUsername</span> <span class="o">=</span> <span class="n">userId</span><span class="p">;</span>
-    <span class="n">payment</span><span class="o">.</span><span class="n">paymentDiscount</span> <span class="o">=</span> <span class="n">discount</span><span class="p">;</span>
-    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">addPayment</span><span class="p">:</span><span class="n">payment</span><span class="p">];</span>
+</pre></td><td class="rouge-code"><pre><span class="kt">SKMutablePayment</span> <span class="o">*</span><span class="n">payment</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SKMutablePayment</span> <span class="nv">paymentWithProduct</span><span class="p">:</span><span class="n">product</span><span class="p">];</span>
+
+<span class="kt">SKPaymentDiscount</span> <span class="o">*</span><span class="n">discount</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKPaymentDiscount</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithIdentifier</span><span class="p">:</span><span class="n">identifier</span> <span class="nv">keyIdentifier</span><span class="p">:</span><span class="n">keyIdentifier</span> <span class="nv">nonce</span><span class="p">:</span><span class="n">nonce</span> <span class="nv">signature</span><span class="p">:</span><span class="n">signature</span> <span class="nv">timestamp</span><span class="p">:</span><span class="n">timestamp</span><span class="p">];</span>
+
+<span class="n">payment</span><span class="o">.</span><span class="n">applicationUsername</span> <span class="o">=</span> <span class="n">userId</span><span class="p">;</span>
+<span class="n">payment</span><span class="o">.</span><span class="n">paymentDiscount</span> <span class="o">=</span> <span class="n">discount</span><span class="p">;</span>
+<span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">addPayment</span><span class="p">:</span><span class="n">payment</span><span class="p">];</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 13. app将会展示系统订阅窗口，向用户展示订阅信息。</p>
@@ -903,7 +903,7 @@
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
         <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    [[SKPaymentQueue defaultQueue] addTransactionObserver:_transactionObserver];
+</pre></td><td class="rouge-code"><pre>[[SKPaymentQueue defaultQueue] addTransactionObserver:_transactionObserver];
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 5. 对于 AppStore (iOS)，有必要安装一个 Web 服务器来响应订阅状态更改的 HTTP POST 请求。
@@ -911,7 +911,7 @@
 
 <p>##4. 参考文档</p>
 
-<p> [Apple 开发者文档]https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/loading_in-app_product_identifiers?language=objc</p>
+<p> <a href="https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/loading_in-app_product_identifiers?language=objc">Apple 开发者文档</a></p>
 
 </div>
 
