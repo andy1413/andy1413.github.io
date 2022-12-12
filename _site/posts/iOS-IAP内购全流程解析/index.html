@@ -36,25 +36,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.1" />
-<meta property="og:title" content="iOS网络层设计二-缓存方案深入" />
+<meta property="og:title" content="iOS IAP内购看这一篇就够了" />
 <meta name="author" content="王方帅 (andy)" />
 <meta property="og:locale" content="zh_CN" />
-<meta name="description" content="1. YYCache分析  1. 优点：" />
-<meta property="og:description" content="1. YYCache分析  1. 优点：" />
-<link rel="canonical" href="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" />
-<meta property="og:url" content="http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" />
+<meta name="description" content="1. iOS IAP时序图" />
+<meta property="og:description" content="1. iOS IAP时序图" />
+<link rel="canonical" href="http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/" />
+<meta property="og:url" content="http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/" />
 <meta property="og:site_name" content="Andy’s Den" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-12-07T20:30:00+08:00" />
+<meta property="article:published_time" content="2022-12-11T20:30:00+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="iOS网络层设计二-缓存方案深入" />
+<meta property="twitter:title" content="iOS IAP内购看这一篇就够了" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-08T22:08:39+08:00","datePublished":"2022-12-07T20:30:00+08:00","description":"1. YYCache分析  1. 优点：","headline":"iOS网络层设计二-缓存方案深入","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"},"url":"http://localhost:4000/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-11T20:30:00+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购看这一篇就够了","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>iOS网络层设计二-缓存方案深入 | Andy's Den
+  <title>iOS IAP内购看这一篇就够了 | Andy's Den
   </title>
 
   <!--
@@ -421,7 +421,7 @@
         
 
           
-            <span>iOS网络层设计二-缓存方案深入</span>
+            <span>iOS IAP内购看这一篇就够了</span>
           
 
         
@@ -632,78 +632,6 @@
       
 
     
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
 
     
 
@@ -711,53 +639,6 @@
 
   
   
-
-  
-    
-    
-
-    
-      
-        
-        
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
-
-    
 
   
 
@@ -784,7 +665,7 @@
 
 <!-- return -->
 
-<h1 data-toc-skip>iOS网络层设计二-缓存方案深入</h1>
+<h1 data-toc-skip>iOS IAP内购看这一篇就够了</h1>
 
 <div class="post-meta text-muted">
     <!-- published date -->
@@ -800,35 +681,15 @@
 
 
 <em class=""
-    data-ts="1670416200"
+    data-ts="1670761800"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
-  2022/12/07
+  2022/12/11
 </em>
 
     </span>
 
     <!-- lastmod date -->
-    
-    <span>
-      更新于
-      <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-
-<em class=""
-    data-ts="1670508519"
-    data-df="YYYY/MM/DD"
-    data-toggle="tooltip" data-placement="bottom">
-  2022/12/08
-</em>
-
-    </span>
     
 
   
@@ -874,7 +735,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="1065 字">
+  title="1079 字">
   <em>5 分钟</em>阅读</span>
 
     </div>
@@ -884,86 +745,173 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <h2 id="1-yycache分析"><span class="mr-2">1. YYCache分析</span><a href="#1-yycache分析" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<h3 id="1-优点"><span class="mr-2"> 1. 优点：</span><a href="#1-优点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+  <h2 id="1-ios-iap时序图"><span class="mr-2">1. iOS IAP时序图</span><a href="#1-ios-iap时序图" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p><img data-src="https://raw.githubusercontent.com/andy1413/andy1413.github.io/main/assets/img/posts/iOSIAPSequenceChart.png" alt="IAP时序图" data-proofer-ignore></p>
 
-<p>  1. 内部支持数据库存储、文件存储、或混合存储。</p>
+<h2 id="2-实际操作"><span class="mr-2">2. 实际操作</span><a href="#2-实际操作" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>  2. 使用LRU算法，最久未被使用的优先清除，以缓存总个数、缓存总开销、是否过期三个维度进行清理。</p>
+<p> 1. 用户点击”Add License“</p>
 
-<h3 id="2-缺点"><span class="mr-2"> 2. 缺点：</span><a href="#2-缺点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p> 2. iOS app调用自己服务器 ../productIds接口去获取界面上多个订阅项</p>
 
-<p>  1. 是否过期这个维度不是根据写入时间去做的判断，而是根据访问时间，一次访问将更新刷新缓存时间，依此为基础再重新开始算过期时长</p>
+<p> 3. 自己服务器返回productIds</p>
 
-<p>  2. 所以，更加适合的是图片这种只要url一致则图片永远不会发生变更的场景。对于网络层缓存这种场景来说，很可能经常使用的缓存一直不过期，一直无法加载最新网络数据。</p>
+<p> 4. 根据服务器返回展示单个年订阅、月订阅和无限制订阅列表给用户</p>
 
-<h2 id="2-nsurlcache分析"><span class="mr-2">2. NSURLCache分析</span><a href="#2-nsurlcache分析" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p> 5. 用户选择一个订阅计划，点击”Subscribe Now“</p>
 
-<p><img data-src="https://raw.githubusercontent.com/andy1413/andy1413.github.io/main/assets/img/posts/NSURLCache.png" alt="流程图" data-proofer-ignore></p>
+<p> 6. 通过productId调用SKProductsRequest到苹果服务器获取SKProduct</p>
 
-<h3 id="1-缺点"><span class="mr-2"> 1. 缺点：</span><a href="#1-缺点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<div class="language-swift highlighter-rouge"><div class="code-header">
+        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>        <span class="n">_productRequest</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKProductsRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithProductIdentifiers</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">productId</span><span class="p">]];</span>
+        <span class="n">_productRequest</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>  1. 只能缓存get请求，post请求不能缓存。</p>
+<p> 7. 苹果服务器在代理中返回包含折扣的SKProduct</p>
 
-<p>  2. 不够灵活，只能设置一个缓存总文件夹，不能分别指定每个文件缓存的位置。</p>
+<div class="language-swift highlighter-rouge"><div class="code-header">
+        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">productsRequest</span><span class="p">:(</span><span class="kt">SKProductsRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">request</span> <span class="nv">didReceiveResponse</span><span class="p">:(</span><span class="kt">SKProductsResponse</span> <span class="o">*</span><span class="p">)</span><span class="n">response</span> <span class="p">{</span>
+    <span class="c1">//response.products</span>
+    <span class="c1">//response.invalidProductIdentifiers</span>
+<span class="p">}</span>
 
-<p>  3. 苹果没有公开其内部实现的缓存策略是LRU还是别的，所以在超过缓存大小时哪些缓存会被清理掉是不确定的。</p>
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">request</span><span class="p">:(</span><span class="kt">SKRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">request</span> <span class="nv">didFailWithError</span><span class="p">:(</span><span class="kt">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
+    
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>  4. 依赖于云端设置Cache-Control:max-age、ETag、Last-Modified才能实现缓存，如果云端设置为Cache-Control:no-cache、Cache-Control:no-store、ETag没设置、Last-Modified没设置，则客户端无法实现缓存机制。</p>
+<p> 8. 如果productId在invalidProductIdentifiers中，则跳转失败页。</p>
 
-<h2 id="3-hyperoslocache分析"><span class="mr-2">3. hyperoslo/Cache分析</span><a href="#3-hyperoslocache分析" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p> 9. 调用验证折扣接口去自己服务器验证折扣是否被允许。</p>
 
-<p> 1. 磁盘缓存完全根据过期时间进行清理，没有LRU算法。</p>
+<p> 10. 服务器返回验证结果。</p>
 
-<p> 2. 内存缓存在根据过期时间进行清理的前提下如果还超了缓存count和cost，则由NSCache来决定其清理策略。</p>
+<p> 11. 如果服务器验证失败，则跳转失败页。</p>
 
-<h2 id="4-网络层cache选型"><span class="mr-2">4. 网络层Cache选型</span><a href="#4-网络层cache选型" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p> 12. 使用SKProduct和折扣创建SKMutablePayment, 添加到SKPaymentQueue中。</p>
 
-<p> 1. 对比发现，hyperoslo/Cache比较适合用来做网络层缓存，可以支持GET、POST等Method，灵活性高。</p>
+<div class="language-swift highlighter-rouge"><div class="code-header">
+        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>    <span class="kt">SKMutablePayment</span> <span class="o">*</span><span class="n">payment</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SKMutablePayment</span> <span class="nv">paymentWithProduct</span><span class="p">:</span><span class="n">product</span><span class="p">];</span>
+    
+    <span class="kt">SKPaymentDiscount</span> <span class="o">*</span><span class="n">discount</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKPaymentDiscount</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithIdentifier</span><span class="p">:</span><span class="n">identifier</span> <span class="nv">keyIdentifier</span><span class="p">:</span><span class="n">keyIdentifier</span> <span class="nv">nonce</span><span class="p">:</span><span class="n">nonce</span> <span class="nv">signature</span><span class="p">:</span><span class="n">signature</span> <span class="nv">timestamp</span><span class="p">:</span><span class="n">timestamp</span><span class="p">];</span>
+    
+    <span class="n">payment</span><span class="o">.</span><span class="n">applicationUsername</span> <span class="o">=</span> <span class="n">userId</span><span class="p">;</span>
+    <span class="n">payment</span><span class="o">.</span><span class="n">paymentDiscount</span> <span class="o">=</span> <span class="n">discount</span><span class="p">;</span>
+    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">addPayment</span><span class="p">:</span><span class="n">payment</span><span class="p">];</span>
+</pre></td></tr></tbody></table></code></div></div>
 
-<p> 2.其根据过期时间进行清理的方式契合网络层缓存方式。</p>
+<p> 13. app将会展示系统订阅窗口，向用户展示订阅信息。</p>
 
-<p> 3.支持实现Codable协议的可以直接缓存，看出作者考虑到了网络返回Model缓存的场景匹配性。</p>
+<p> 14. 用户点击”Subscribe“去开始支付流程。</p>
 
-<h2 id="5-md5值是否会发生哈希碰撞"><span class="mr-2">5. MD5值是否会发生哈希碰撞</span><a href="#5-md5值是否会发生哈希碰撞" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<p> 1.<a href="https://www.javaroad.cn/questions/130314">两个不同的字符串可以生成相同的MD5哈希码吗？</a></p>
+<p> 15. 苹果在代理回调中返回支付结果</p>
 
-<p>  <a href="https://www.it1352.com/558448.html">md5的冲突率是多少？</a></p>
+<div class="language-swift highlighter-rouge"><div class="code-header">
+        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">paymentQueue</span><span class="p">:(</span><span class="kt">SKPaymentQueue</span> <span class="o">*</span><span class="p">)</span><span class="n">queue</span> <span class="nv">updatedTransactions</span><span class="p">:(</span><span class="kt">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">transactions</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="n">transactionState</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="kt">SKPaymentTransactionStatePurchasing</span><span class="p">:</span>
+                
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateDeferred</span><span class="p">:</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kt">SKPaymentTransactionStatePurchased</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateFailed</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateRestored</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="p">:</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></div></div>
 
-<p>  根据这两个链接的说的，MD5的算法被设计为最小化碰撞的可能性，在128位MD5中，两个任意值，碰撞概率只有2^-128.</p>
+<p> 16. 如果苹果返回支付失败，则跳转失败页。</p>
 
-<p> 2. SDWebImage、YYCache、Cache这些著名三方框架都是使用md5值作为filename去存储的。</p>
+<p> 17. 从沙盒得到所有收据列表数据做base64String</p>
 
-<p> 3. 不用md5存的话不确定会不会有其他问题，比如特殊字符、比如超过文件名最大长度。</p>
+<p> 18. 发送base64String到自己服务器。</p>
 
-<h2 id="6-缓存过期问题变了之后怎么处理"><span class="mr-2">6. 缓存过期问题，变了之后怎么处理。</span><a href="#6-缓存过期问题变了之后怎么处理" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<p> 问：</p>
+<p> 19. 自己服务器调用apple.com/verifyReceipt接口验证收据。</p>
 
-<p>  如果上午发起请求后服务端返回数据给客户端，客户端缓存到了本地，下午再次发起请求时服务端实际已经变了，但是取的客户端缓存，还是老数据，这种情况怎么处理？</p>
+<p> 20. 苹果服务器返回所有收据列表json到我们服务器。</p>
 
-<p> 答：</p>
+<p> 21. 遍历所有收据，找出originalTransitionId跟TransitionId相同的项，这些是新订阅的，然后再找到其中所有没处理过的收据，下发所有没处理过收据对应的license给用户账号。续订是苹果服务器直接跟自己服务器去交互的，客户端不需要管。</p>
 
-<p>  1. 我认为这个需要根据时效性要求来定，如果有很高的时效性要求，就不能使用缓存，而是使用remote来请求。</p>
+<p> 22. 如果最后一个收据是成功的，返回成功给app，否则返回error给app。</p>
 
-<p>  2.或者根据具体场景选择是否使用localThenRemote。</p>
+<p> 23. 如果返回的error，则跳转失败页。</p>
 
-<p>  3.而localOrRemote需要谨慎使用，在时效性要求不高的场景来使用，依赖客户端的过期时长，过期后再次从服务器拉取。</p>
+<p> 24. 展示成功UI给用户，用户可以看到云端下发的license。</p>
 
-<p>  4.还可以这样，比如在一级页面请求remote刷新缓存，二级以上页面使用localOrRemote。</p>
+<h2 id="3-优化点"><span class="mr-2">3. 优化点</span><a href="#3-优化点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<h2 id="7增加缓存版本"><span class="mr-2">7，增加缓存版本</span><a href="#7增加缓存版本" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<p> 在DiskCache的name字段中增加缓存版本，以app版本为缓存版本，升级版本后删除之前的缓存文件。</p>
+<p> 1. 在addPayment之前可以做这样一个处理，使用iCloudToken或UUID存Keychain来生成一个设备ID，用这个来判断用户在这个iCloud账号下或这个设备下购买过几次license了，比如用户在A账号购买了一个月度订阅，又在B账号要购买一个月度订阅，这时候同一个appleid是不支持这个操作的，就需要创建多个productId来根据购买次数返回对应的productId，这样来避免流失的用户。</p>
 
-<h2 id="8按照业务设置不同的基类去配置不同的缓存过期时长"><span class="mr-2">8，按照业务设置不同的基类去配置不同的缓存过期时长。</span><a href="#8按照业务设置不同的基类去配置不同的缓存过期时长" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-<p> 按照业务去配置不同的缓存过期时长。</p>
+<p> 2. 判断如果是卸载重装的app在获得网络权限后通过SKReceiptRefreshRequest来获取未下载到本地的receipt数据，然后上报给服务器，让服务器确保收到所有收据，没有漏单。</p>
 
-<h2 id="9-参考文章"><span class="mr-2">9. 参考文章：</span><a href="#9-参考文章" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p> 3. 支付时的验票请求需要服务器lastReceipt验票通过给客户端返回成功或失败，客户端可以据此展示成功或失败页面给用户。非支付时的验票请求是为了确保服务器一定收到了收据，防止漏单的，所以服务端不需要判断lastReceipt给客户端返回成功还是失败，只要整体收据是有效的，个人感觉一律返回成功即可。</p>
 
-<p> <a href="https://juejin.cn/post/6844903554214264840">YYCache 源码解析 - 掘金</a></p>
+<p> 4.启动app后在appDelegate didFinishLaunching中就要开启支付结果监听，因为上一次如果支付后无网再次启动有监听的话也会再次调用updatedTransactions代理。</p>
 
-<p> <a href="https://www.jianshu.com/p/fb5aaeac06ef">iOS网络缓存扫盲篇–使用两行代码就能完成80%的缓存需求</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    [[SKPaymentQueue defaultQueue] addTransactionObserver:_transactionObserver];
+</pre></td></tr></tbody></table></code></div></div>
 
-<p> <a href="https://www.jianshu.com/p/b4488c53225a">NSURLCache</a></p>
+<p> 5. 对于 AppStore (iOS)，有必要安装一个 Web 服务器来响应订阅状态更改的 HTTP POST 请求。
+ <a href="https://developer.apple.com/documentation/appstoreservernotifications/enabling_app_store_server_notifications">Apple 开发者文档</a></p>
+
+<p>##4. 参考文档</p>
+
+<p> [Apple 开发者文档]https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/loading_in-app_product_identifiers?language=objc</p>
 
 </div>
 
@@ -989,20 +937,11 @@
       <a href="/tags/swift/"
           class="post-tag no-text-decoration" >Swift</a>
       
-      <a href="/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/"
-          class="post-tag no-text-decoration" >网络层</a>
+      <a href="/tags/iap/"
+          class="post-tag no-text-decoration" >IAP</a>
       
-      <a href="/tags/cache/"
-          class="post-tag no-text-decoration" >Cache</a>
-      
-      <a href="/tags/%E7%BC%93%E5%AD%98/"
-          class="post-tag no-text-decoration" >缓存</a>
-      
-      <a href="/tags/yycache/"
-          class="post-tag no-text-decoration" >YYCache</a>
-      
-      <a href="/tags/nsurlcache/"
-          class="post-tag no-text-decoration" >NSURLCache</a>
+      <a href="/tags/%E5%86%85%E8%B4%AD/"
+          class="post-tag no-text-decoration" >内购</a>
       
   </div>
   
@@ -1037,19 +976,19 @@
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5+-+Andy%27s+Den&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25BA%258C-%25E7%25BC%2593%25E5%25AD%2598%25E6%2596%25B9%25E6%25A1%2588%25E6%25B7%25B1%25E5%2585%25A5%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=iOS+IAP%E5%86%85%E8%B4%AD%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86+-+Andy%27s+Den&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS-IAP%25E5%2586%2585%25E8%25B4%25AD%25E5%2585%25A8%25E6%25B5%2581%25E7%25A8%258B%25E8%25A7%25A3%25E6%259E%2590%2F" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5+-+Andy%27s+Den&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25BA%258C-%25E7%25BC%2593%25E5%25AD%2598%25E6%2596%25B9%25E6%25A1%2588%25E6%25B7%25B1%25E5%2585%25A5%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=iOS+IAP%E5%86%85%E8%B4%AD%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86+-+Andy%27s+Den&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS-IAP%25E5%2586%2585%25E8%25B4%25AD%25E5%2585%25A8%25E6%25B5%2581%25E7%25A8%258B%25E8%25A7%25A3%25E6%259E%2590%2F" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS%25E7%25BD%2591%25E7%25BB%259C%25E5%25B1%2582%25E8%25AE%25BE%25E8%25AE%25A1%25E4%25BA%258C-%25E7%25BC%2593%25E5%25AD%2598%25E6%2596%25B9%25E6%25A1%2588%25E6%25B7%25B1%25E5%2585%25A5%2F&text=iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5+-+Andy%27s+Den" data-toggle="tooltip" data-placement="top"
+        <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FiOS-IAP%25E5%2586%2585%25E8%25B4%25AD%25E5%2585%25A8%25E6%25B5%2581%25E7%25A8%258B%25E8%25A7%25A3%25E6%259E%2590%2F&text=iOS+IAP%E5%86%85%E8%B4%AD%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86+-+Andy%27s+Den" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
@@ -1510,20 +1449,20 @@
   
 
   
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
   
 
   
@@ -1550,11 +1489,11 @@
   
     
     
-      
-      
-    
   
     
+    
+      
+      
     
   
     
@@ -1617,7 +1556,7 @@
       
       
       <div class="card">
-        <a href="/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/">
+        <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -1629,13 +1568,13 @@
 
 
 <em class="small"
-    data-ts="1670761800"
+    data-ts="1670416200"
     data-df="YYYY/MM/DD"
     >
-  2022/12/11
+  2022/12/07
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>iOS IAP内购看这一篇就够了</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>iOS网络层设计二-缓存方案深入</h3>
             <div class="text-muted small">
               <p>
                 
@@ -1644,22 +1583,18 @@
 
 
 
-                1. iOS IAP时序图
+                1. YYCache分析
+ 1. 优点：
 
+  1. 内部支持数据库存储、文件存储、或混合存储。
 
-2. 实际操作
+  2. 使用LRU算法，最久未被使用的优先清除，以缓存总个数、缓存总开销、是否过期三个维度进行清理。
 
- 1. 用户点击”Add License“
+ 2. 缺点：
 
- 2. iOS app调用自己服务器 ../productIds接口去获取界面上多个订阅项
+  1. 是否过期这个维度不是根据写入时间去做的判断，而是根据访问时间，一次访问将更新刷新缓存时间，依此为基础再重新开始算过期时长
 
- 3. 自己服务器返回productIds
-
- 4. 根据服务器返回展示单个年订阅、月订阅和无限制订阅列表给用户
-
- 5. 用户选择一个订阅计划，点击”Subscribe Now“
-
- 6. 通过prod...
+  2. 所以，更加适合的是图片这种...
               </p>
             </div>
           </div>
@@ -1678,17 +1613,17 @@
 
 <div class="post-navigation d-flex justify-content-between">
   
-  <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%B8%80-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" class="btn btn-outline-primary"
+  <a href="/posts/iOS%E7%BD%91%E7%BB%9C%E5%B1%82%E8%AE%BE%E8%AE%A1%E4%BA%8C-%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%E6%B7%B1%E5%85%A5/" class="btn btn-outline-primary"
     prompt="上一篇">
-    <p>iOS网络层设计一-架构设计</p>
+    <p>iOS网络层设计二-缓存方案深入</p>
   </a>
   
 
   
-  <a href="/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/" class="btn btn-outline-primary"
+  <div class="btn btn-outline-primary disabled"
     prompt="下一篇">
-    <p>iOS IAP内购看这一篇就够了</p>
-  </a>
+    <p>-</p>
+  </div>
   
 
 </div>
