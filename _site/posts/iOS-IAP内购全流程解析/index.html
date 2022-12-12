@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS IAP内购看这一篇就够了" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-12T18:52:31+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购看这一篇就够了","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-12T18:57:18+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购看这一篇就够了","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -703,7 +703,7 @@
 
 
 <em class=""
-    data-ts="1670842351"
+    data-ts="1670842638"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
   2022/12/12
@@ -782,18 +782,18 @@
 
 <p> 6. 通过productId调用SKProductsRequest到苹果服务器获取SKProduct</p>
 
-<div class="language-swift highlighter-rouge"><div class="code-header">
-        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+<div class="language-objc highlighter-rouge"><div class="code-header">
+        <span data-label-text="Objective-C"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="n">_productRequest</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKProductsRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithProductIdentifiers</span><span class="p">:</span><span class="err">@</span><span class="p">[</span><span class="n">productId</span><span class="p">]];</span>
-<span class="n">_productRequest</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+</pre></td><td class="rouge-code"><pre><span class="n">_productRequest</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SKProductsRequest</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithProductIdentifiers</span><span class="p">:@[</span><span class="n">productId</span><span class="p">]];</span>
+<span class="n">_productRequest</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 7. 苹果服务器在代理中返回包含折扣的SKProduct</p>
 
-<div class="language-swift highlighter-rouge"><div class="code-header">
-        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+<div class="language-objc highlighter-rouge"><div class="code-header">
+        <span data-label-text="Objective-C"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -802,12 +802,12 @@
 6
 7
 8
-</pre></td><td class="rouge-code"><pre><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">productsRequest</span><span class="p">:(</span><span class="kt">SKProductsRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">request</span> <span class="nv">didReceiveResponse</span><span class="p">:(</span><span class="kt">SKProductsResponse</span> <span class="o">*</span><span class="p">)</span><span class="n">response</span> <span class="p">{</span>
+</pre></td><td class="rouge-code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">productsRequest</span><span class="p">:(</span><span class="n">SKProductsRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span> <span class="nf">didReceiveResponse</span><span class="p">:(</span><span class="n">SKProductsResponse</span> <span class="o">*</span><span class="p">)</span><span class="nv">response</span> <span class="p">{</span>
     <span class="c1">//response.products</span>
     <span class="c1">//response.invalidProductIdentifiers</span>
 <span class="p">}</span>
 
-<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">request</span><span class="p">:(</span><span class="kt">SKRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">request</span> <span class="nv">didFailWithError</span><span class="p">:(</span><span class="kt">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span> <span class="p">{</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">request</span><span class="p">:(</span><span class="n">SKRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span> <span class="nf">didFailWithError</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{</span>
     
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
@@ -822,8 +822,8 @@
 
 <p> 12. 使用SKProduct和折扣创建SKMutablePayment, 添加到SKPaymentQueue中。</p>
 
-<div class="language-swift highlighter-rouge"><div class="code-header">
-        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+<div class="language-objc highlighter-rouge"><div class="code-header">
+        <span data-label-text="Objective-C"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -831,13 +831,13 @@
 5
 6
 7
-</pre></td><td class="rouge-code"><pre><span class="kt">SKMutablePayment</span> <span class="o">*</span><span class="n">payment</span> <span class="o">=</span> <span class="p">[</span><span class="kt">SKMutablePayment</span> <span class="nv">paymentWithProduct</span><span class="p">:</span><span class="n">product</span><span class="p">];</span>
+</pre></td><td class="rouge-code"><pre><span class="n">SKMutablePayment</span> <span class="o">*</span><span class="n">payment</span> <span class="o">=</span> <span class="p">[</span><span class="n">SKMutablePayment</span> <span class="nf">paymentWithProduct</span><span class="p">:</span><span class="n">product</span><span class="p">];</span>
 
-<span class="kt">SKPaymentDiscount</span> <span class="o">*</span><span class="n">discount</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">SKPaymentDiscount</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithIdentifier</span><span class="p">:</span><span class="n">identifier</span> <span class="nv">keyIdentifier</span><span class="p">:</span><span class="n">keyIdentifier</span> <span class="nv">nonce</span><span class="p">:</span><span class="n">nonce</span> <span class="nv">signature</span><span class="p">:</span><span class="n">signature</span> <span class="nv">timestamp</span><span class="p">:</span><span class="n">timestamp</span><span class="p">];</span>
+<span class="n">SKPaymentDiscount</span> <span class="o">*</span><span class="n">discount</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SKPaymentDiscount</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithIdentifier</span><span class="p">:</span><span class="n">identifier</span> <span class="nf">keyIdentifier</span><span class="p">:</span><span class="n">keyIdentifier</span> <span class="n">nonce</span><span class="o">:</span><span class="n">nonce</span> <span class="n">signature</span><span class="o">:</span><span class="n">signature</span> <span class="n">timestamp</span><span class="o">:</span><span class="n">timestamp</span><span class="p">];</span>
 
-<span class="n">payment</span><span class="o">.</span><span class="n">applicationUsername</span> <span class="o">=</span> <span class="n">userId</span><span class="p">;</span>
-<span class="n">payment</span><span class="o">.</span><span class="n">paymentDiscount</span> <span class="o">=</span> <span class="n">discount</span><span class="p">;</span>
-<span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">addPayment</span><span class="p">:</span><span class="n">payment</span><span class="p">];</span>
+<span class="n">payment</span><span class="p">.</span><span class="n">applicationUsername</span> <span class="o">=</span> <span class="n">userId</span><span class="p">;</span>
+<span class="n">payment</span><span class="p">.</span><span class="n">paymentDiscount</span> <span class="o">=</span> <span class="n">discount</span><span class="p">;</span>
+<span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addPayment</span><span class="p">:</span><span class="n">payment</span><span class="p">];</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 13. app将会展示系统订阅窗口，向用户展示订阅信息。</p>
@@ -846,8 +846,8 @@
 
 <p> 15. 苹果在代理回调中返回支付结果</p>
 
-<div class="language-swift highlighter-rouge"><div class="code-header">
-        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
+<div class="language-objc highlighter-rouge"><div class="code-header">
+        <span data-label-text="Objective-C"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -869,24 +869,24 @@
 19
 20
 21
-</pre></td><td class="rouge-code"><pre><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">paymentQueue</span><span class="p">:(</span><span class="kt">SKPaymentQueue</span> <span class="o">*</span><span class="p">)</span><span class="n">queue</span> <span class="nv">updatedTransactions</span><span class="p">:(</span><span class="kt">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">transactions</span> <span class="p">{</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">switch</span> <span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="n">transactionState</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">case</span> <span class="kt">SKPaymentTransactionStatePurchasing</span><span class="p">:</span>
+</pre></td><td class="rouge-code"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">paymentQueue</span><span class="p">:(</span><span class="n">SKPaymentQueue</span> <span class="o">*</span><span class="p">)</span><span class="nv">queue</span> <span class="nf">updatedTransactions</span><span class="p">:(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">transactions</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">transaction</span><span class="p">.</span><span class="n">transactionState</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">SKPaymentTransactionStatePurchasing</span><span class="p">:</span>
                 
                 <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateDeferred</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">SKPaymentTransactionStateDeferred</span><span class="p">:</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="kt">SKPaymentTransactionStatePurchased</span><span class="p">:</span>
-                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+            <span class="k">case</span> <span class="n">SKPaymentTransactionStatePurchased</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateFailed</span><span class="p">:</span>
-                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+            <span class="k">case</span> <span class="n">SKPaymentTransactionStateFailed</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="kt">SKPaymentTransactionStateRestored</span><span class="p">:</span>
-                    <span class="p">[[</span><span class="kt">SKPaymentQueue</span> <span class="n">defaultQueue</span><span class="p">]</span> <span class="nv">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+            <span class="k">case</span> <span class="n">SKPaymentTransactionStateRestored</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
                 <span class="k">break</span><span class="p">;</span>
-            <span class="k">default</span><span class="p">:</span> <span class="k">break</span><span class="p">;</span>
+            <span class="nl">default:</span> <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -954,8 +954,11 @@
       <a href="/tags/ios%E6%9E%B6%E6%9E%84/"
           class="post-tag no-text-decoration" >iOS架构</a>
       
-      <a href="/tags/swift/"
-          class="post-tag no-text-decoration" >Swift</a>
+      <a href="/tags/oc/"
+          class="post-tag no-text-decoration" >OC</a>
+      
+      <a href="/tags/objc/"
+          class="post-tag no-text-decoration" >ObjC</a>
       
       <a href="/tags/iap/"
           class="post-tag no-text-decoration" >IAP</a>
@@ -1125,47 +1128,6 @@
     
     
     
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -1195,6 +1157,58 @@
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -1205,13 +1219,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
         
         
 
@@ -1221,18 +1228,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
     
   
     
@@ -1268,18 +1263,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
         
         
 
@@ -1289,18 +1272,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
     
   
     
@@ -1361,12 +1332,115 @@
     
     
     
+      
+    
   
     
     
     
     
       
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -1410,13 +1484,16 @@
       <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
     
       
+      <a class="post-tag" href="/tags/objc/">ObjC</a>
+    
+      
+      <a class="post-tag" href="/tags/oc/">OC</a>
+    
+      
       <a class="post-tag" href="/tags/yycache/">YYCache</a>
     
       
       <a class="post-tag" href="/tags/%E5%86%85%E8%B4%AD/">内购</a>
-    
-      
-      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>
@@ -1775,47 +1852,6 @@
     
     
     
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -1845,6 +1881,58 @@
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -1855,13 +1943,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
         
         
 
@@ -1871,18 +1952,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
     
   
     
@@ -1918,18 +1987,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
         
         
 
@@ -1939,18 +1996,6 @@
     
     
       
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
     
   
     
@@ -2011,12 +2056,115 @@
     
     
     
+      
+    
   
     
     
     
     
       
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
     
   
     
@@ -2060,13 +2208,16 @@
       <a class="post-tag" href="/tags/nsurlcache/">NSURLCache</a>
     
       
+      <a class="post-tag" href="/tags/objc/">ObjC</a>
+    
+      
+      <a class="post-tag" href="/tags/oc/">OC</a>
+    
+      
       <a class="post-tag" href="/tags/yycache/">YYCache</a>
     
       
       <a class="post-tag" href="/tags/%E5%86%85%E8%B4%AD/">内购</a>
-    
-      
-      <a class="post-tag" href="/tags/%E7%BC%93%E5%AD%98/">缓存</a>
     
 
     </div>
