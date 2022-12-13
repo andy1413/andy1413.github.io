@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS IAP内购全流程解析" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-13T09:59:39+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购全流程解析","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-13T10:00:22+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购全流程解析","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -703,7 +703,7 @@
 
 
 <em class=""
-    data-ts="1670896779"
+    data-ts="1670896822"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
   2022/12/13
@@ -914,8 +914,8 @@
 
 <p> 1. 在addPayment之前可以做这样一个处理，使用iCloudToken或IDFV存Keychain来生成一个设备ID，用这个来判断用户在这个iCloud账号下或这个设备下购买过几次license了，比如用户在A账号购买了一个月度订阅，又在B账号要购买一个月度订阅，这时候同一个appleid是不支持这个操作的，就需要创建多个productId来根据购买次数返回对应的productId，这样来避免流失的用户。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-objc highlighter-rouge"><div class="code-header">
+        <span data-label-text="Objective-C"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -934,30 +934,30 @@
 16
 17
 18
-</pre></td><td class="rouge-code"><pre>    id token = [NSFileManager defaultManager].ubiquityIdentityToken;
+</pre></td><td class="rouge-code"><pre>    <span class="n">id</span> <span class="n">token</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFileManager</span> <span class="nf">defaultManager</span><span class="p">].</span><span class="n">ubiquityIdentityToken</span><span class="p">;</span>
     
-    if (token) {
-        NSData *tokenData = [NSKeyedArchiver archivedDataWithRootObject: token];
-        if (tokenData &amp;&amp; tokenData.length != 0) {
-            return [tokenData base64EncodedString];
-        }
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSData</span> <span class="o">*</span><span class="n">tokenData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSKeyedArchiver</span> <span class="nf">archivedDataWithRootObject</span><span class="p">:</span> <span class="n">token</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tokenData</span> <span class="o">&amp;&amp;</span> <span class="n">tokenData</span><span class="p">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">tokenData</span> <span class="nf">base64EncodedString</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
     
-    NSString *keychainDeviceID = [KeychainManager objectForKey:@"deviceID"];
-    if (keychainDeviceID) {
-        return keychainDeviceID;
-    }
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">keychainDeviceID</span> <span class="o">=</span> <span class="p">[</span><span class="n">KeychainManager</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"deviceID"</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">keychainDeviceID</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">keychainDeviceID</span><span class="p">;</span>
+    <span class="p">}</span>
     
-    NSUUID *deviceID = [[UIDevice currentDevice] identifierForVendor];
-    NSString *deviceIDString = [deviceID UUIDString];
-    [KeychainManager setObject:deviceID forKey:@"deviceID"];
-    return deviceIDString;
+    <span class="n">NSUUID</span> <span class="o">*</span><span class="n">deviceID</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIDevice</span> <span class="nf">currentDevice</span><span class="p">]</span> <span class="nf">identifierForVendor</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">deviceIDString</span> <span class="o">=</span> <span class="p">[</span><span class="n">deviceID</span> <span class="nf">UUIDString</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">KeychainManager</span> <span class="nf">setObject</span><span class="p">:</span><span class="n">deviceID</span> <span class="nf">forKey</span><span class="p">:</span><span class="s">@"deviceID"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">deviceIDString</span><span class="p">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 2. 判断如果是卸载重装的app在获得网络权限后通过SKReceiptRefreshRequest来获取未下载到本地的receipt数据，然后上报给服务器，让服务器确保收到所有收据，没有漏单。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="code-header">
-        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
+<div class="language-swift highlighter-rouge"><div class="code-header">
+        <span data-label-text="Swift"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="已复制！"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -976,24 +976,24 @@
 16
 17
 18
-</pre></td><td class="rouge-code"><pre>@objc public func refreshReceipt(){
-    let request = SKReceiptRefreshRequest(receiptProperties: nil)
-    request.delegate = self
-    request.start()
-}
+</pre></td><td class="rouge-code"><pre><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">refreshReceipt</span><span class="p">(){</span>
+    <span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">SKReceiptRefreshRequest</span><span class="p">(</span><span class="nv">receiptProperties</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+    <span class="n">request</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="p">}</span>
 
-public func requestDidFinish(_ request: SKRequest) {
-  // call refresh subscriptions method again with same blocks
-    if request is SKReceiptRefreshRequest {
-        self.sendReceiptToServer()
-    }
-}
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestDidFinish</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SKRequest</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// call refresh subscriptions method again with same blocks</span>
+    <span class="k">if</span> <span class="n">request</span> <span class="k">is</span> <span class="kt">SKReceiptRefreshRequest</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">sendReceiptToServer</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-public func request(_ request: SKRequest, didFailWithError error: Error){
-    if request is SKReceiptRefreshRequest {
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SKRequest</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">){</span>
+    <span class="k">if</span> <span class="n">request</span> <span class="k">is</span> <span class="kt">SKReceiptRefreshRequest</span> <span class="p">{</span>
         
-    }
-}
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
 
 <p> 3. 支付时的验票请求需要服务器lastReceipt验票通过给客户端返回成功或失败，客户端可以据此展示成功或失败页面给用户。非支付时的验票请求是为了确保服务器一定收到了收据，防止漏单的，所以服务端不需要判断lastReceipt给客户端返回成功还是失败，只要整体收据是有效的，个人感觉一律返回成功即可。</p>
