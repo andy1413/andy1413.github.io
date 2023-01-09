@@ -49,7 +49,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="iOS IAP内购全流程解析" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-13T10:01:54+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购全流程解析","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"王方帅 (andy)","url":"https://github.com/andy1413/"},"dateModified":"2022-12-13T10:06:42+08:00","datePublished":"2022-12-11T20:30:00+08:00","description":"1. iOS IAP时序图","headline":"iOS IAP内购全流程解析","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"},"url":"http://localhost:4000/posts/iOS-IAP%E5%86%85%E8%B4%AD%E5%85%A8%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -644,6 +644,18 @@
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -715,7 +727,7 @@
 
 
 <em class=""
-    data-ts="1670896914"
+    data-ts="1670897202"
     data-df="YYYY/MM/DD"
     data-toggle="tooltip" data-placement="bottom">
   2022/12/13
@@ -767,8 +779,8 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="1325 字">
-  <em>7 分钟</em>阅读</span>
+  title="1502 字">
+  <em>8 分钟</em>阅读</span>
 
     </div>
 
@@ -1042,7 +1054,15 @@
 
 <p>  <a href="https://developer.apple.com/documentation/appstoreservernotifications/enabling_app_store_server_notifications">Apple 开发者文档</a></p>
 
-<h2 id="4-参考文档"><span class="mr-2">4. 参考文档</span><a href="#4-参考文档" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p> 7. is-retryable字段需要服务器做一下处理，避免类似苹果支付收据还没同步给苹果验票服务器导致验票不成功的问题，此字段在21100-21199 status时将会返回true，服务器可以加个延时5秒再次请求苹果服务器进行验票，以便尽快下发订阅给用户。</p>
+
+<p>  <a href="https://www.namiml.com/blog/app-store-verify-receipt-definitive-guide">Receipt Response</a></p>
+
+<h2 id="4-知识点"><span class="mr-2">4. 知识点</span><a href="#4-知识点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p> 1. in_app, latest_receipt_info存在返回为空的收据，苹果app分为免费app和付费app，即使是免费app下载时也会生成收据，这时候还没有应用内购买，所以in_app, latest_receipt_info会返回空，receipt中仅仅包含app购买的收据。</p>
+
+<h2 id="5-参考文档"><span class="mr-2">5. 参考文档</span><a href="#5-参考文档" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <p> <a href="https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/loading_in-app_product_identifiers?language=objc">Apple 开发者文档</a></p>
 
@@ -2352,7 +2372,7 @@
     <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
       <div class="footer-left">
         <p class="mb-0">
-          © 2022
+          © 2023
           <a href="https://github.com/andy1413">王方帅 (andy)</a>.
           
           <span data-toggle="tooltip" data-placement="top"
