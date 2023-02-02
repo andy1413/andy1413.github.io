@@ -156,3 +156,4 @@ SKPaymentQueue.default().presentCodeRedemptionSheet()
 
 &emsp;[iOS StoreKit 2 新特性解析-51CTO.COM](https://www.51cto.com/article/708077.html)
 
+
