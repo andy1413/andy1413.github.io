@@ -1,12 +1,12 @@
 ---
 title: iOS StoreKit2新特性
 author: andy
-date: 2022-02-01 20:30:00 +0800
+date: 2023-02-01 20:30:00 +0800
 categories: [iOS应用]
 tags: [iOS架构, Swift5.5, 异步并发, IAP, 内购]
 ---
 
-##1. 客户端相关：
+## 1. 客户端相关：
 
 &emsp;1. 使用iOS15以上可用的Swift异步并发API进行开发，代码可以做到最简洁。
 
@@ -90,7 +90,7 @@ try await AppStore.sync()
 SKPaymentQueue.default().presentCodeRedemptionSheet()
 ```
 
-##2. 服务器相关：
+## 2. 服务器相关：
 
 &emsp;1. 服务器API接口汇总：https://developer.apple.com/documentation/appstoreserverapi
 
@@ -140,7 +140,7 @@ SKPaymentQueue.default().presentCodeRedemptionSheet()
 
 &emsp;&emsp;[Apple Developer Documentation](https://developer.apple.com/documentation/appstoreserverapi/extend_a_subscription_renewal_date/)  inApps/v1/subscription/extend/{original_transaction_id
 
-##3. StoreKit2 丢单处理：
+## 3. StoreKit2 丢单处理：
 
 &emsp;还是有可能出现丢单的情况，例如购买成功了，Apple 返回结果时由于网络的原因导致失败了，但是此时会更容易解决。
 
@@ -150,6 +150,8 @@ SKPaymentQueue.default().presentCodeRedemptionSheet()
 
 &emsp;&emsp;在购买时向 product 内 appAccountToken 字段里塞入业务方 orderID 相关的信息，当用户反馈扣款了但是没发货时，可以让用户提供 Apple 的 orderID，通过它可以直接去苹果服务器获取对应的 Transaction 信息，找到 Transaction.appAccountToken ，再给用户发货。(这里可以做成一个自动化处理工具，只需要用户提供苹果的 orderID，就可以去查找对应的业务方 orderID 进行发货。)
 
-##4. 参考文章：
+## 4. 参考文章：
+
 &emsp;[StoreKit2 有这么香？嗯，我试过了，真香 - 掘金 ](https://juejin.cn/post/7023974581446639630)
+
 &emsp;[iOS StoreKit 2 新特性解析-51CTO.COM](https://www.51cto.com/article/708077.html)
