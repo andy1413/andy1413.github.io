@@ -155,3 +155,4 @@ SKPaymentQueue.default().presentCodeRedemptionSheet()
 &emsp;[StoreKit2 有这么香？嗯，我试过了，真香 - 掘金 ](https://juejin.cn/post/7023974581446639630)
 
 &emsp;[iOS StoreKit 2 新特性解析-51CTO.COM](https://www.51cto.com/article/708077.html)
+
